@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCharacterEventsTable extends Migration
+class CreateCharactersEventTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCharacterEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('character_events', function (Blueprint $table) {
+        Schema::create('characters_event', function (Blueprint $table) {
             $table->integer('event_id')->unsigned();
             $table->foreign('event_id')->references('id')->on('events');
             $table->integer('character_id')->unsigned();
@@ -30,6 +30,6 @@ class CreateCharacterEventsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('character_events');
+        Schema::dropIfExists('characters_event');
     }
 }
