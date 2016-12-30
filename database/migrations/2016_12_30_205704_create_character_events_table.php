@@ -16,8 +16,8 @@ class CreateCharacterEventsTable extends Migration
         Schema::create('character_events', function (Blueprint $table) {
             $table->integer('event_id')->unsigned();
             $table->foreign('event_id')->references('id')->on('events');
-            $table->integer('characters_id')->unsigned();
-            $table->foreign('characters_id')->references('id')->on('characters');
+            $table->integer('character_id')->unsigned();
+            $table->foreign('character_id')->references('id')->on('characters');
             $table->boolean('status');
             $table->timestamps();
         });
