@@ -11,6 +11,9 @@ class InstancesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('instances')->insert([
+            'nom'=>'Grimrail Depot',
+            'typeInstance'=>'Donjon',
+        ]);
     }
 }
