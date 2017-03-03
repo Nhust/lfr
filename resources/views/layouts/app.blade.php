@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,80 +8,97 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Lfr') }}</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/css.css" rel="stylesheet">
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
-        window.Laravel = <?php echo json_encode([
+        window.Lfr = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
 </head>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+</head>
+
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+<div id="wrapper">
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <div class="title-site"><a href="{{url('/')}}">Looking For Raid</a></div>
+            <br> <br>
+            <form class="form-horizontal" role="form" method="GET" action="{{URL::route('search')}}">
+                <div class="form-group">
+                    <li><input type="text" name="search" id="search" placeholder="Recherche" class="form-control"></li>
                 </div>
+            </form>
+        @if (Auth::guest())
+                <li><a href="{{ url('/login') }}" class="nav-link first"><i class="icone"><img src="/image/profile.png"></i>Login</a></li>
+                <li><a href="{{ url('/register') }}" class="nav-link"><i class="icone"><img src="/image/profile.png"></i>S'enregister</a></li>
+            @else
+                <div class="pseudo">{{Auth::user()->prenom}}</div>
+                <div class="btag">{{Auth::user()->btag}}</div>
+                <div class="event-creer"><a href="{{URL::route('event.create')}}">Créer un Event</a></div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
+            <li><a href="{{URL::route('profile.index',Auth::user()->id)}}" class="nav-link first"><i class="icone"><img src="/image/profile.png"></i>Profile</a></li>
+            <li><a href="{{URL::route('profile.showCharacters',Auth::user()->id)}}" class="nav-link"><i class="icone"><img src="/image/character.png"></i>Personnages</a></li>
+            <li><a href="{{URL::route('profile.showEvents',Auth::user()->id)}}" class="nav-link"><i class="icone"><img src="/image/event.png" alt=""></i>Evènements</a></li>
+            <li>
+                <a href="{{ url('/logout') }}" class="nav-link"
+                   onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+                    <i class="icone"><img src="/image/logout.png" alt=""></i>
+                    Deconnecter
+                </a>
 
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+            </li>
+                @endif
+        </ul>
+    </div>
+    <div class="jump-content"></div>
+    <a href="#menu-toggle" class="btn-nav" id="menu-toggle"><img  src="/image/hamburger.png" alt="" class="hamburger"></a>
 
+    <div id="page-content-wrapper">
         @yield('content')
     </div>
 
+</div>
+
+
+</body>
+
+</html>
+
+</header>
+<script src="/js/jquery.js"></script>
+
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+
 </body>
 </html>

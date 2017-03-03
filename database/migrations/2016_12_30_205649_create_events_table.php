@@ -17,7 +17,10 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->integer('nbCharacters');
-            $table->date('datetime');
+            $table->date('date');
+            $table->time('heure');
+            $table->text('description');
+            $table->string('difficulte');
             $table->integer('instance_id')->unsigned();
             $table->foreign('instance_id')->references('id')->on('instances');
             $table->integer('user_id')->unsigned();

@@ -14,8 +14,9 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'nom' => 'Libeert',
             'prenom' => 'Pierre-Henri',
-            'email' => 'worfut@gmail.com',
+            'email' => 'worfut@hotmail.fr',
             'password' => bcrypt('secret'),
+            'btag' => 'Bënz#2915',
         ]);
     }
 }

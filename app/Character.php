@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Character extends Model
 {
     protected $fillable = [
-        'pseudo', 'race', 'classe', 'level', 'faction', 'itemLevel', 'user_id',
+        'pseudo', 'race', 'classe', 'level','serveur', 'faction', 'itemLevel', 'user_id',
     ];
 
 }
