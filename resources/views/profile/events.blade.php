@@ -73,8 +73,7 @@
                         En attente
                 @endif
             </td>
-            <td><span class="supprimer"><a href="{{URL::route('events.destroy',$event->id)}}">Supprimer</a></span> / <span class="editer"><a
-                            href="{{URL::route('event.edit',$event->id)}}">Editer</a></span> </td>
+            <td><span class="supprimer"><a href="#">Supprimer</a></span> / <span class="editer"></td>
         </tr>
 
 @endforeach

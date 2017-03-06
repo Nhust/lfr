@@ -66,7 +66,7 @@ class EventController extends Controller
         'difficulte' => 'required',
         'nbJoueurs'=>'required|numeric|min:5|max:30',
         'date'=>'required|date_format:Y-m-d',
-        'heure'=>'required|date_format:h:i',
+        'heure'=>'required|date_format:"H:i"',
         'description'=>'required',
     ])->validate();
         Event::create([
@@ -224,7 +224,7 @@ class EventController extends Controller
             'instance_id'=>'required|numeric',
             'nbCharacters'=>'required',
             'date'=>'required|date_format:Y-m-d',
-            'heure'=>'required|date_format:H:i:s',
+            'heure'=>'required|date_format:"H:i"',
             'description'=>'required',
             'nbCharacters'=>'required|numeric|min:5|max:30',
 
