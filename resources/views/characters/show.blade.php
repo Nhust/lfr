@@ -1,7 +1,7 @@
 @extends('layouts/app')
 @section('content')
 <div class="container">
-    <img src="/image/hunter.png" style="width:150px" alt=""><br><br>
+    <img src='/image/{{$char->classe}}.png' style="width:150px" alt=""><br><br>
     <h1><b>Pseudo</b> {{$char->pseudo}}</h1>
     <h3><b>Faction</b> {{$char->faction}}</h3>
     <h3><b>Serveur</b> {{$char->serveur}}</h3>

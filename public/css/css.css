@@ -144,7 +144,8 @@ nav li{
     font-size:15px;
 }
 nav li a{
-    color:#F44336;
+    color:#
+;
 }
 nav li a:hover{
     color:#F44336;
@@ -273,4 +274,7 @@ td a:hover{
     top:151px;
     margin-left:1px;
     color:#fff;
+}
+nav>li>a{
+    color: #ff6347!important;
 }

@@ -1,4 +1,7 @@
 @extends('layouts/app')
+@section('title')
+    Vos évènements
+@stop
 @section('content')
 <h1>Vos Evènements</h1>
     <table class="table table-character">
@@ -73,7 +76,10 @@
                         En attente
                 @endif
             </td>
-            <td><span class="supprimer"><a href="#">Supprimer</a></span> / <span class="editer"></td>
+            <td><span class="supprimer">
+                    {{--<a href="{{URL::route('events.cancel',$participation->event)}}">Annuler--}}
+                    {{--</a>--}}
+                </span>
         </tr>
 
 @endforeach

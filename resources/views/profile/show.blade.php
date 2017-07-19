@@ -1,5 +1,7 @@
 @extends('layouts/app')
-
+@section('title')
+    Profile - {{$user->btag}}
+@stop
 @section('content')
     <h1>Profil de <span class="tag">{{$user->prenom}} {{$user->nom}}</span></h1>
     <h3>{{$user->btag}}</h3><br><br>

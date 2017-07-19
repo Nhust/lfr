@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    Les derniers évènements
+@stop
 @section('content')
     <link rel="stylesheet" href="css/css.css">
     <h1>Les prochains events</h1>

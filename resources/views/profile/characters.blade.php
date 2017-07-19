@@ -1,5 +1,7 @@
 @extends('layouts/app')
-
+@section('title')
+    Vos personnages
+@stop
 @section('content')
     <h1>Vos personnages</h1><br>
    <div class="personnage-creer"> <a href="{{URL::route('characters.create')}}">Créer un Personnage</a></div>

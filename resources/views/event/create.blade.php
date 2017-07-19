@@ -1,4 +1,9 @@
 @extends('layouts/app')
+
+@section('title')
+    Créer un évènement
+@stop
+
 @section('content')
         @if($errors->any())
             <div class="alert alert-danger">

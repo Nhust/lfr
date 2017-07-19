@@ -1,4 +1,7 @@
 @extends('layouts/app')
+@section('title')
+    {{$event->nom}}
+@stop
 @section('content')
         @if($errors->any())
             <div class="alert alert-danger">

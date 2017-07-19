@@ -1,4 +1,10 @@
 @extends('layouts.app')
+@section('title')
+     {{$event->eventsNom}} - Description
+@stop
+@section('title')
+    {{$event->instancesNom}} - {{$event->eventsNom}}
+@stop
 @section('content')
     <div class="banner" style="background:url('/image/test4.jpg')no-repeat;background-size:cover;">
         <h3 class="box-shadow event-title">{{$event->eventsNom}}</h3>

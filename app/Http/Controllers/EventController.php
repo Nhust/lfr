@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
 
-
 class EventController extends Controller
 {
     /**
@@ -79,8 +78,8 @@ class EventController extends Controller
             'description' => $request->description,
             'nbCharacters' => $request->nbJoueurs,
     ]);
-        return redirect()->route('event.index');
-
+//        $utilisateur = Auth::user()->id;
+        return redirect()->route('profile.showEvents','2');
     }
 
     /**
@@ -99,6 +98,7 @@ class EventController extends Controller
         return view('event.show',compact('event'));
         var_dump($event);
     }
+
     public function showRoster($id){
         $event=DB::table('events')
             ->select('*','instances.nom as instancesNom','events.id as eventId','events.nom as eventsNom')
@@ -119,6 +119,8 @@ class EventController extends Controller
             ->get();
         return view('event.showRoster',compact('event','players','accepter','refuser'));
     }
+
+
     public function inscription($id){
         $Auth_id=Auth::id();
         $event=DB::table('events')
@@ -126,6 +128,7 @@ class EventController extends Controller
             ->where('events.id',$id)
             ->join('instances','instances.id','events.instance_id')
             ->first();
+
         $personnages=DB::table('characters')
             ->select('characters.pseudo')
             ->where('characters.user_id',$Auth_id)
@@ -142,14 +145,19 @@ class EventController extends Controller
         return redirect()->back();
 
     }
+
+
+
     public function refuser($id,$refuser){
         DB::table('characters_event')
             ->select('*')
             ->where('event_id',$id)
             ->where('character_id',$refuser)
             ->update(['status' => 2]);
-        return redirect()->back();
     }
+
+
+
     public function savesCharacters(Request $request, $id)
     {
         $pseudo=$request->personnage;
@@ -254,7 +262,7 @@ class EventController extends Controller
             return redirect()->back();
         }
         else {
-            echo "Tu peux pas delete mdr boloss";
+           return redirect()->back();
         }
     }
 }
