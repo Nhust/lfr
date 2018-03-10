@@ -8,8 +8,8 @@
         <thead>
         <tr>
             {{--<th>Nom</th>--}}
-            <th>Instance</th>
-            <th>Difficulté</th>
+            <th>Titre</th>
+            <th>Nom</th>
             <th>Date</th>
             <th>Confirmé</th>
             <th>En attente</th>
@@ -35,7 +35,7 @@
                     ->count();
             ?>
             <tr>
-                <td><a href="{{URL::route('event.show',$event->id)}}">{{$event->instanceNom}}</a></td>
+                <td><a href="{{URL::route('event.show',$event->id)}}">{{$event->nom}}</a></td>
                 <td>{{$event->difficulte}}</td>
                 <td>{{$event->date}}</td>
                 <td>{{$eventsParticipantsConfirmer}}</td>
@@ -53,6 +53,7 @@
 <table class="table table-character">
     <thead>
     <tr>
+        <th>Titre</th>
         <th>Instance</th>
         <th>Date</th>
         <th>Personnage</th>
@@ -63,7 +64,8 @@
     @foreach($participations as $participation)
         <tr>
 
-            <td><a href="{{URL::route('event.show',$participation->eventId)}}">{{$participation->instanceNom}} - {{$participation->difficulte}}</a></td>
+            <td><a href="{{URL::route('event.show',$participation->eventId)}}">{{$participation->eventNom}} - {{$participation->difficulte}}</a></td>
+            <td>{{$participation->instanceNom}}</td>
             <td>{{$participation->date}}</td>
             <td>{{$participation->pseudo}}</td>
             <td>

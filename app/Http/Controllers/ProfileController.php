@@ -76,10 +76,9 @@ class ProfileController extends Controller
     }
     public function showCharacters($id)
     {
-        $characters=DB::table('characters')->select('*')->where('user_id',$id)->get();
-        return view('profile.characters',compact('characters'));
+        $characters = DB::table('characters')->select('*')->where('user_id', $id)->get();
+        return view('profile.characters', compact('characters'));
     }
-
 
     /**
      * Remove the specified resource from storage.

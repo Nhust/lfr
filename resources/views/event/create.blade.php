@@ -30,19 +30,19 @@
                             <div class="form-group">
                                 <label for="date" class="col-md-2 control-label">Date</label>
                                 <div class="col-md-10 col-xl-12">
-                                    <input id="date" type="date" class="form-control" name="date" value="{{old('date')}}" placeholder="Jour/Mois/Année" required autofocus>
+                                    <input id="date" type="date" class="form-control" name="date" value="{{old('date')}}" placeholder="Jour/Mois/Année" required >
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="heure" class="col-md-2 control-label">Heure</label>
                                 <div class="col-md-10 col-xl-12">
-                                    <input id="heure" type="time" class="form-control" name="heure" value="{{ old('heure') }}" placeholder="00:00"  required autofocus>
+                                    <input id="heure" type="text" class="form-control" name="heure" value="{{ old('heure') }}" placeholder="00:00"  required  maxlength="5" minlength="5">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="instance" class="col-md-2 control-label">Instance</label>
                                 <div class="col-md-10 col-xl-12">
-                                    <select id="instance" class="form-control selectpicker" name="instance" value="{{ old('instance') }}" required autofocus>
+                                    <select id="instance" class="form-control selectpicker" name="instance" value="{{ old('instance') }}" required >
                                         @foreach($instances as $instance)
                                             <option>{{$instance->nom}}</option>
                                         @endforeach
@@ -52,7 +52,7 @@
                             <div class="form-group">
                                 <label for="difficulte" class="col-md-2 control-label">Difficulté</label>
                                 <div class="col-md-10 col-xl-12">
-                                    <select id="difficulte" name="difficulte" class="form-control selectpicker" value="{{old('difficulte')}}" required autofocus>
+                                    <select id="difficulte" name="difficulte" class="form-control selectpicker" value="{{old('difficulte')}}" required >
                                         <option>Normal</option>
                                         <option>HM</option>
                                         <option>MM</option>
@@ -62,13 +62,13 @@
                             <div class="form-group">
                                 <label for="description" class="col-md-2 control-label">Description</label>
                                 <div class="col-md-10 col-xl-12">
-                                    <textarea id="description" type="text" class="form-control" name="description"  autofocus>{{old('description')}}</textarea>
+                                    <textarea id="description" type="text" class="form-control" name="description"  >{{old('description')}}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="nbJoueurs" class="col-md-2 control-label">Nombre de joueur</label>
                                 <div class="col-md-10 col-xl-12">
-                                    <input type="number" class="form-control" name="nbJoueurs" value="{{old('nbJoueurs')}}" required autofocus max="30">
+                                    <input type="number" class="form-control" name="nbJoueurs" value="{{old('nbJoueurs')}}" required  max="30">
                                 </div>
                             </div>
                             <div class="form-group">
