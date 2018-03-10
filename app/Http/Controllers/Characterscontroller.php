@@ -44,6 +44,7 @@ class Characterscontroller extends Controller
         Validator::make($request->all(), [
             'pseudo' => 'required|unique:characters|max:255',
         ])->validate();
+        $id = Auth::user()->id;
         Character::create([
             'pseudo'=> $request->pseudo,
             'race'=> $request->race,
@@ -52,9 +53,9 @@ class Characterscontroller extends Controller
             'faction'=>$request->faction,
             'itemLevel'=>$request->itemLevel,
             'serveur'=>$request->serveur,
-            'user_id'=>$request->user_id,
+            'user_id'=>$id
         ]);
-        $id = Auth::user()->id;
+
         return redirect()->route('profile.showCharacters',$id);
 
     }

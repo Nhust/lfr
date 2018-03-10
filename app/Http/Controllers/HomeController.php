@@ -9,9 +9,6 @@ class HomeController extends Controller
 
     public function search(Request $request){
         $search  = $request->search;
-
-
-
             $recherches = DB::table('events')
                 ->select('users.*', 'events.*', 'users.nom as usernom')
                 ->where('events.nom', 'Like', '%' . $search . '%')
