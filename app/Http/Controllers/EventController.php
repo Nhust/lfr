@@ -153,11 +153,12 @@ class EventController extends Controller
 
     public function refuser($id, $refuser)
     {
-        DB::table('characters_event')
+         DB::table('characters_event')
             ->select('*')
             ->where('event_id', $id)
             ->where('character_id', $refuser)
             ->update(['status' => 2]);
+        return redirect()->back();
     }
 
 
